@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: openjdk11
+      java: corretto11
   build:
     commands:
       - ./mvnw -s .m2/settings.xml --batch-mode clean package 
