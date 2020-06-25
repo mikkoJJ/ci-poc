@@ -6,7 +6,7 @@ phases:
       java: corretto11
   build:
     commands:
-      - ./mvnw -s .m2/settings.xml --batch-mode clean package 
+      - ./mvnw --batch-mode clean package 
   post_build:
     commands:
       - echo Build completed on `date`
