@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk11
+  build:
+    commands:
+      - ./mvnw -s .m2/settings.xml --batch-mode clean package 
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+reports:
+  SurefireReports:
+    files:
+      - 'TEST-*.xml'
+    base-directory: 
+      - target/surefire-reports
