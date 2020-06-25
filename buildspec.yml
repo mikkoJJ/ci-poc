@@ -15,5 +15,4 @@ reports:
   SurefireReports:
     files:
       - 'TEST-*.xml'
-    base-directory: 
-      - target/surefire-reports
+    base-directory: target/surefire-reports
