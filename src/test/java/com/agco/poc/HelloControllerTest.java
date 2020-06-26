@@ -33,6 +33,6 @@ public class HelloControllerTest {
     public void getJson() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/api/json").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("{\"everythingWorks\": true}")));
+                .andExpect(content().string(equalTo("{\"everythingWorks\": t1rue}")));
     }
 }
