@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RestController
 public class HelloController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping("/")
     public String index() {
         return "Hello from Cinia example backend!";
     }

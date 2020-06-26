@@ -6,12 +6,13 @@ phases:
       java: corretto11
   build:
     commands:
-      - ./mvnw --batch-mode clean package 
+      - ./mvnw verify sonar:sonar -Dsonar.branch.name=$CODEBUILD_WEBHOOK_HEAD_REF
   post_build:
     commands:
       - echo Build completed on `date`
 
 reports:
+  # unit tests:
   SurefireReports:
     files:
       - 'TEST-*.xml'

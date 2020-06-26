@@ -16,20 +16,6 @@
         <relativePath/>
     </parent>
 
-    <!-- this section allows deployment to Artifactory -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Cinia Artifactory-snapshots</name>
-            <url>http://artifactory.ip.cinia.fi:80/libs-snapshot-local</url>
-        </snapshotRepository>
-        <repository>
-            <id>central</id>
-            <name>Cinia Artifactory-releases</name>
-            <url>http://artifactory.ip.cinia.fi:80/libs-release-local</url>
-        </repository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,6 +30,16 @@
 
     <properties>
         <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <sonar.projectKey>mikkoJJ_ci-poc</sonar.projectKey>
+        <sonar.organization>mikkojj</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.login>${env.SONAR_LOGIN}</sonar.login>
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+
+        <jacoco.version>0.8.5</jacoco.version>
     </properties>
 
     <build>
@@ -55,6 +51,21 @@
                     <layers>
                         <enabled>true</enabled>
                     </layers>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                <execution>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                </executions>
+                <configuration>
+                <destFile>${sonar.jacoco.reportPath}</destFile>
                 </configuration>
             </plugin>
         </plugins>
