@@ -6,7 +6,7 @@ phases:
       java: corretto11
   build:
     commands:
-      - ./mvnw --batch-mode clean package 
+      - ./mvnw verify sonar:sonar
   post_build:
     commands:
       - echo Build completed on `date`
