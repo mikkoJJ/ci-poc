@@ -12,6 +12,7 @@ phases:
       - echo Build completed on `date`
 
 reports:
+  # unit tests:
   SurefireReports:
     files:
       - 'TEST-*.xml'
